@@ -1,0 +1,27 @@
+name: ansible-linter
+description: Dependency-light static analysis for Ansible playbooks and roles
+branding:
+  icon: check-circle
+  color: blue
+inputs:
+  paths:
+    description: Files or directories to lint
+    required: false
+    default: "."
+  fail-on:
+    description: "Severity threshold for a non-zero exit: info, warning, or error"
+    required: false
+    default: error
+  args:
+    description: Extra arguments passed to `ansible-linter lint`
+    required: false
+    default: ""
+runs:
+  using: composite
+  steps:
+    - name: Install ansible-linter
+      shell: bash
+      run: pip install "${{ github.action_path }}"
+    - name: Run ansible-linter
+      shell: bash
+      run: ansible-linter lint ${{ inputs.paths }} --fail-on ${{ inputs.fail-on }} ${{ inputs.args }}

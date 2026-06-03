@@ -1,0 +1,25 @@
+---
+- hosts: db
+  serial: 2
+  tasks:
+    - name: Legacy privilege escalation
+      sudo: true
+      command: psql -c 'select 1'
+      changed_when: false
+
+    - name: Run as postgres without enabling become
+      become_user: postgres
+      command: pg_dump app
+      changed_when: false
+
+    - name: Drop a config with raw octal mode
+      file:
+        path: /etc/app/legacy.conf
+        state: touch
+        mode: 0640
+
+    - name: Restart only when flagged
+      service:
+        name: app
+        state: restarted
+      when: restart_requested == true

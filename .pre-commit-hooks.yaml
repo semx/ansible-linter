@@ -1,0 +1,7 @@
+- id: ansible-linter
+  name: ansible-linter
+  description: Dependency-light static analysis for Ansible playbooks and roles
+  entry: ansible-linter lint
+  language: python
+  types: [yaml]
+  require_serial: true
