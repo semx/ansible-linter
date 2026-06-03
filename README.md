@@ -1,5 +1,7 @@
 # Ansible Linter
 
+[![tests](https://github.com/semx/ansible-linter/actions/workflows/tests.yml/badge.svg)](https://github.com/semx/ansible-linter/actions/workflows/tests.yml)
+
 Small static analysis toolkit for Ansible playbooks and roles.
 
 The linter focuses on operational safety rather than formatting. It scans YAML

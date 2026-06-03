@@ -19,3 +19,6 @@ ansible-linter = "ansible_linter.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["ansible_linter*"]
+
+[tool.mypy]
+strict = true
