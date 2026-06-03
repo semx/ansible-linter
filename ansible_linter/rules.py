@@ -10,9 +10,9 @@ from ansible_linter.models import Finding
 
 
 TASK_START_RE = re.compile(
-    r"^(?P<indent>\s*)-\s*(?:(?:name\s*:)|(?P<module>shell|command|raw|apt|yum|dnf|package|debug|set_fact|uri|copy|template)\s*:)"
+    r"^(?P<indent>\s*)-\s*(?:(?:name\s*:)|(?P<module>shell|command|raw|apt|yum|dnf|package|service|debug|set_fact|uri|copy|template)\s*:)"
 )
-MODULE_RE = re.compile(r"^\s*-?\s*(shell|command|raw|apt|yum|dnf|package)\s*:")
+MODULE_RE = re.compile(r"^\s*-?\s*(shell|command|raw|apt|yum|dnf|package|service)\s*:")
 HOSTS_ALL_RE = re.compile(r"^\s*-?\s*hosts\s*:\s*(all|['\"]all['\"])\s*$", re.IGNORECASE)
 ALLOW_HOSTS_ALL = "ansible-linter: allow hosts-all"
 SECRET_WORDS = ("password", "passwd", "token", "secret", "api_key", "private_key")
