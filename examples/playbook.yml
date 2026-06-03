@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Restart application without a guard
+      shell: systemctl restart app
+
+    - name: Install latest nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Write API token
+      copy:
+        dest: /etc/app/token
+        content: "{{ api_token }}"
+
+    - name: Hide service check failure
+      command: systemctl status app
+      ignore_errors: true
